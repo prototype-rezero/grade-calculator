@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Module Calculator</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #eee;
+}
+
+input {
+    width: 80px;
+}
+
+.name {
+    width: 150px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.result {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Module Final Grade Calculator</h2>
+
+<table id="table">
+<thead>
+<tr>
+    <th>Module</th>
+    <th>TD /20</th>
+    <th>TP /20</th>
+    <th>Exam /20</th>
+    <th>Parameter</th>
+    <th>Final /20</th>
+    <th>Final × Parameter</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<button onclick="addRow()">➕ Add Module</button>
+
+<div class="result" id="sumWeighted">Σ (Final × Parameter): 0</div>
+<div class="result" id="finalResult">Final Result /20: 0</div>
+
+<div>
+    <p>sorry mkch l wa9t la tazyiin o styling hhhhhhhh</p>
+    <p>made by ell.ibrahimi</p>
+</div>
+
+<script>
+function addRow() {
+    const tbody = document.querySelector("#table tbody");
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td><input class="name" type="text"></td>
+        <td><input type="number" min="0" max="20" oninput="calculate()"></td>
+        <td><input type="number" min="0" max="20" oninput="calculate()"></td>
+        <td><input type="number" min="0" max="20" oninput="calculate()"></td>
+        <td><input type="number" min="1" value="1" oninput="calculate()"></td>
+        <td class="final">0</td>
+        <td class="weighted">0</td>
+    `;
+    tbody.appendChild(tr);
+}
+
+function calculate() {
+    const rows = document.querySelectorAll("#table tbody tr");
+
+    let sumFinalParam = 0;
+    let sumParam = 0;
+
+    rows.forEach(row => {
+        const td = parseFloat(row.cells[1].querySelector("input").value);
+        const tp = parseFloat(row.cells[2].querySelector("input").value);
+        const exam = parseFloat(row.cells[3].querySelector("input").value);
+        const param = parseFloat(row.cells[4].querySelector("input").value) || 0;
+
+        let final = 0;
+
+        if (!isNaN(exam)) {
+            if (!isNaN(td) && !isNaN(tp)) {
+                // TD + TP + Exam
+                final = (((td + tp) / 2) * 0.4) + (exam * 0.6);
+            } 
+            else if (!isNaN(td)) {
+                // TD + Exam
+                final = (td * 0.4) + (exam * 0.6);
+            } 
+            else if (!isNaN(tp)) {
+                // TP + Exam
+                final = (tp * 0.4) + (exam * 0.6);
+            } 
+            else {
+                // Exam only
+                final = exam;
+            }
+        }
+
+        final = Math.round(final * 100) / 100;
+        const weighted = Math.round(final * param * 100) / 100;
+
+        row.querySelector(".final").textContent = final;
+        row.querySelector(".weighted").textContent = weighted;
+
+        sumFinalParam += weighted;
+        sumParam += param;
+    });
+
+    const globalFinal = sumParam > 0
+        ? Math.round((sumFinalParam / sumParam) * 100) / 100
+        : 0;
+
+    document.getElementById("sumWeighted").textContent =
+        "Σ (Final × Parameter): " + sumFinalParam;
+
+    document.getElementById("finalResult").textContent =
+        "Final Result /20: " + globalFinal;
+}
+
+// start with one row
+addRow();
+</script>
+
+</body>
+</html>
