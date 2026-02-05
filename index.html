@@ -29,11 +29,11 @@ th, td {
     border-radius: 5px;
     padding: 8px;
     text-align: center;
-    background-color: #e3e4ff;
+    background-color: #e6e7ff;
 }
 
 th {
-    background: rgb(224, 228, 255);
+    background: rgb(231, 229, 255);
 }
 
 input {
@@ -107,12 +107,6 @@ button:hover::after {
  animation-play-state: running;
 }
 
-
-.result {
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: bold;
-}
 h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -123,10 +117,17 @@ p {
     font-weight: bold;
 }
 .result {
+
     margin-left: 10px;
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+}
+.pass {
+    color: green;
+}
+.fail {
+    color: red;
 }
 </style>
 </head>
@@ -231,8 +232,20 @@ function calculate() {
     document.getElementById("sumWeighted").textContent =
         "Σ (Final × Parameter): " + sumFinalParam;
 
-    document.getElementById("finalResult").textContent =
-        "Final Result /20: " + globalFinal;
+    const finalResultEl = document.getElementById("finalResult");
+
+finalResultEl.textContent = "Final Result /20: " + globalFinal;
+
+// remove old colors
+finalResultEl.classList.remove("pass", "fail");
+
+// apply new color
+if (globalFinal < 10) {
+    finalResultEl.classList.add("fail");
+} else {
+    finalResultEl.classList.add("pass");
+}
+
 }
 
 // start with one row
