@@ -43,7 +43,10 @@ input {
     height: 25px;
     text-align: center;
 }
+input:focus {
+    outline: rgb(178, 161, 255) 1px solid;
 
+}
 .name {
     width: 150px;
 }
@@ -141,11 +144,11 @@ p {
 <thead>
 <tr>
     <th>Module</th>
-    <th>TD /20</th>
-    <th>TP /20</th>
-    <th>Exam /20</th>
+    <th>TD / 20</th>
+    <th>TP / 20</th>
+    <th>Exam / 20</th>
     <th>Parameter</th>
-    <th>Final /20</th>
+    <th>Final / 20</th>
     <th>Final × Parameter</th>
 </tr>
 </thead>
@@ -157,8 +160,12 @@ p {
 
 <button onclick="addRow()" style="background-color:#f2f0ff; border-style: none; border-radius:10px;">Add Module</button>
 
-<div class="result" id="sumWeighted">Σ (Final × Parameter): 0</div>
-<div class="result" id="finalResult">Final Result /20: 0</div>
+<div class="result" id="sumWeighted">sum (final × parameter) : 0</div>
+<div class="result">
+    final result / 20 :
+    <span id="finalNumber">0</span>
+</div>
+
 
 <div>
     <p>sorry mkch l wa9t la tazyiin o l styling hhhhhhhh</p>
@@ -232,20 +239,19 @@ function calculate() {
     document.getElementById("sumWeighted").textContent =
         "Σ (Final × Parameter): " + sumFinalParam;
 
-    const finalResultEl = document.getElementById("finalResult");
+    const numberEl = document.getElementById("finalNumber");
 
-finalResultEl.textContent = "Final Result /20: " + globalFinal;
+numberEl.textContent = globalFinal;
 
-// remove old colors
-finalResultEl.classList.remove("pass", "fail");
+// reset color
+numberEl.classList.remove("pass", "fail");
 
-// apply new color
+// apply color only to the number
 if (globalFinal < 10) {
-    finalResultEl.classList.add("fail");
+    numberEl.classList.add("fail");
 } else {
-    finalResultEl.classList.add("pass");
+    numberEl.classList.add("pass");
 }
-
 }
 
 // start with one row
