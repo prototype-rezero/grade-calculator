@@ -1,327 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Module Calculator</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="gradecalculator.css">
+        <title>Module Calculator</title>
+    </head>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body { 
-    font-family: Arial, sans-serif;
-    background: #fefaff;
-    padding: 20px;
-    color: rgb(89, 75, 97);
-}
+    <body>
+        <h2>Module Final Grade Calculator</h2>
+            <div class="tbl">
+            <table id="table">
+            <thead>
+            <tr>
+                <th>Module</th>
+                <th>TD / 20</th>
+                <th>TP / 20</th>
+                <th>Exam / 20</th>
+                <th>Parameter</th>
+                <th>Final / 20</th>
+                <th>Final × Parameter</th>
+                <th>Remove module</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            </table>
+            </div>
 
-table {
-    width: 100%;
-    border-collapse:separate ;
-    border-spacing: 5px;
-    background: transparent;
-}
+        <button class="add" onclick="addRow()">Add Module</button>
 
-th, td {
-    border: 1px none hsl(240, 100%, 5%);
-    border-radius: 7px;
-    padding: 8px;
-    text-align: center;
-    background-color: #e6e7ff;
-}
-
-th {
-    background: rgb(231, 229, 255);
-}
-
-input {
-    border-radius: 5px;
-    border-style: none;
-    width: 90px;
-    height: 25px;
-    text-align: center;
-    background-color: #fefdff;
-}
-input:focus {
-    outline: rgb(178, 161, 255) 1px solid;
-
-}
-.name {
-    width: 150px;
-}
-.tbl {
-min-width: fit-content;
-    padding: 2px;
-    border-radius: 10px;
-    border: none;
-    background-color: #f1ecff;
-        box-shadow: 0px 0px 20px 0px rgba(39, 0, 131, 0.1);
-}
-
-.add{
-    display: block;
-    margin: 30px auto;
-  border: none;
-  color:rgb(89, 75, 97);
-  font-size:14px;
-  font-weight: bold;
-  position: relative;
-  width: 110px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(30, 0, 87);
-  border-radius: 20px;
-}
-@property --deg{
-  syntax: '<angle>';
-  inherits: true;
-  initial-value: 0deg;
-}
-.add::before,
-.add::after{
-  content: "";
-  border-radius: 12px;
-  width: 103%;
-  height: 108%;
-  position: absolute;
-  background: conic-gradient(from var(--deg), #dcc1ff, #c4b9ff, #d1a9ff, #d5b0ff);
-  z-index: -2;
-  animation: rotate 2s linear infinite;
-  animation-play-state: running;
-}
-.add::after{
-  z-index: -1;
-  filter: blur(10px);
-  transition: filter 0.5s ease;
-} 
-@keyframes rotate {
-  to {
-    --deg: 360deg;
-  }  
-}
-.add:hover::after{
-  filter: blur(15px);
-}
-.add:hover::before,
-.add:hover::after {
- animation: rotate 2s linear infinite;
- animation-play-state: running;
-}
-.rmv{
-    padding: 5px 10px;
-    background-color: #9582ff;
-    border-style: none;
-    border-radius:10px;
-    width: fit-content;
-    height: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    color: whitesmoke;
-    transition: background-color 0.3s ease;
-}
-.rmv:hover{
-    background-color: #765eff;
-
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-p {
-    text-align: center;
-    margin-top: 30px;
-    font-weight: bold;
-}
-#sumWeighted {
-    margin-top: 30px;
-
-}
-.result {
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-.pass {
-    color: green;
-}
-.fail {
-    color: red;
-}
-@keyframes rowEnter {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.new-row {
-    animation: rowEnter 0.3s ease-out forwards;
-}
-@keyframes rowExit {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-}
-
-.removing-row {
-    animation: rowExit 0.25s ease-in forwards;
-}
-</style>
-</head>
-
-<body>
-
-<h2>Module Final Grade Calculator</h2>
-
-<div class="tbl">
-<table id="table">
-<thead>
-<tr>
-    <th>Module</th>
-    <th>TD / 20</th>
-    <th>TP / 20</th>
-    <th>Exam / 20</th>
-    <th>Parameter</th>
-    <th>Final / 20</th>
-    <th>Final × Parameter</th>
-    <th>Remove module</th>
-</tr>
-</thead>
-
-<tbody>
-</tbody>
-</table>
-</div>
-
-<button class="add" onclick="addRow()" style="background-color:#f2f0ff; border-style: none; border-radius:10px;">Add Module</button>
-
-<div class="result" id="sumWeighted">sum (final × parameter) : 0</div>
-<div class="result">
-    final result / 20 :
-    <span id="finalNumber">0</span>
-</div>
+        <div class="result" id="sumWeighted">sum (final × parameter) : 0</div>
+        <div class="result">
+            final result / 20 :
+            <span id="finalNumber">0</span>
+        </div>
 
 
-<div>
-    <p>sorry mkch l wa9t la tazyiin o l styling hhhhhhhh</p>
-    <p>made by ell.ibrahimi</p>
-</div>
-
-<script>
-function addRow() {
-    const tbody = document.querySelector("#table tbody");
-
-    const tr = document.createElement("tr");
-    tr.classList.add("new-row"); // 
-    tr.innerHTML = `
-        <td><input class="name" type="text"></td>
-        <td><input type="number" min="0" max="20" oninput="calculate()"></td>
-        <td><input type="number" min="0" max="20" oninput="calculate()"></td>
-        <td><input type="number" min="0" max="20" oninput="calculate()"></td>
-        <td><input type="number" min="1" value="1" oninput="calculate()"></td>
-        <td class="final">0</td>
-        <td class="weighted">0</td>
-        <td>
-            <button class="rmv" onclick="removeRow(this)">remove</button>
-        </td>
-    `;
-    tbody.appendChild(tr);
-}
-function removeRow(btn) {
-    const row = btn.closest("tr");
-
-    row.classList.add("removing-row");
-
-    row.addEventListener("animationend", () => {
-        row.remove();
-        calculate();
-    }, { once: true });
-}
-
-
-function calculate() {
-    const rows = document.querySelectorAll("#table tbody tr");
-
-    let sumFinalParam = 0;
-    let sumParam = 0;
-
-    rows.forEach(row => {
-        const td = parseFloat(row.cells[1].querySelector("input").value);
-        const tp = parseFloat(row.cells[2].querySelector("input").value);
-        const exam = parseFloat(row.cells[3].querySelector("input").value);
-        const param = parseFloat(row.cells[4].querySelector("input").value) || 0;
-
-        let final = 0;
-
-        if (!isNaN(exam)) {
-            if (!isNaN(td) && !isNaN(tp)) {
-                // TD + TP + Exam
-                final = (((td + tp) / 2) * 0.4) + (exam * 0.6);
-            } 
-            else if (!isNaN(td)) {
-                // TD + Exam
-                final = (td * 0.4) + (exam * 0.6);
-            } 
-            else if (!isNaN(tp)) {
-                // TP + Exam
-                final = (tp * 0.4) + (exam * 0.6);
-            } 
-            else {
-                // Exam only
-                final = exam;
-            }
-        }
-
-        final = Math.round(final * 100) / 100;
-        const weighted = Math.round(final * param * 100) / 100;
-
-        row.querySelector(".final").textContent = final;
-        row.querySelector(".weighted").textContent = weighted;
-
-        sumFinalParam += weighted;
-        sumParam += param;
-    });
-
-    const globalFinal = sumParam > 0
-        ? Math.round((sumFinalParam / sumParam) * 100) / 100
-        : 0;
-
-    document.getElementById("sumWeighted").textContent =
-        "Σ (Final × Parameter): " + sumFinalParam;
-
-    const numberEl = document.getElementById("finalNumber");
-
-numberEl.textContent = globalFinal;
-
-// reset color
-numberEl.classList.remove("pass", "fail");
-
-// apply color only to the number
-if (globalFinal < 10) {
-    numberEl.classList.add("fail");
-} else {
-    numberEl.classList.add("pass");
-}
-}
-
-// start with one row
-addRow();
-</script>
-
-</body>
+        <div>
+            <p>sorry mkch l wa9t la tazyiin o l styling hhhhhhhh</p>
+            <p>made by ell.ibrahimi</p>
+        </div>
+    <script src="gradecalculator.js"></script>
+    </body>
 </html>
