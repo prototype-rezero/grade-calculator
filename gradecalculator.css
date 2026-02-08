@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body { 
+    font-family: Arial, sans-serif;
+    background: #fefaff;
+    padding: 20px;
+    color: rgb(89, 75, 97);
+}
+
+table {
+    width: 100%;
+    border-collapse:separate ;
+    border-spacing: 5px;
+    background: transparent;
+}
+
+th, td {
+    border: 1px none hsl(240, 100%, 5%);
+    border-radius: 7px;
+    padding: 8px;
+    text-align: center;
+    background-color: #e6e7ff;
+}
+
+th {
+    background: rgb(231, 229, 255);
+}
+
+input {
+    border-radius: 5px;
+    border-style: none;
+    width: 90px;
+    height: 25px;
+    text-align: center;
+    background-color: #fefdff;
+}
+input:focus {
+    outline: rgb(178, 161, 255) 1px solid;
+
+}
+.name {
+    width: 150px;
+}
+.tbl {
+    min-width: fit-content;
+    padding: 2px;
+    border-radius: 10px;
+    border: none;
+    background-color: #f1ecff;
+    box-shadow: 0px 0px 20px 0px rgba(39, 0, 131, 0.075);
+}
+.add{
+  display: block;
+  margin: 30px auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #f2f0ff;
+  color:rgb(89, 75, 97);
+  font-size:14px;
+  font-weight: bold;
+  position: relative;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:background-color 0.3s ease;
+}
+.add:hover {
+  background-color: #f2e8ff;
+}
+@property --deg{
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+.add::before,
+.add::after{
+  content: "";
+  border-radius: 12px;
+  width: 103%;
+  height: 108%;
+  position: absolute;
+  background: conic-gradient(from var(--deg), #dcc1ff, #c4b9ff, #d1a9ff, #d5b0ff);
+  z-index: -2;
+  animation: rotate 2s linear infinite;
+  animation-play-state: running;
+}
+.add::after{
+  z-index: -1;
+  filter: blur(10px);
+  transition: filter 0.5s ease;
+} 
+@keyframes rotate {
+  to {
+    --deg: 360deg;
+  }  
+}
+.add:hover::after{
+  filter: blur(15px);
+}
+.add:hover::before,
+.add:hover::after {
+ animation: rotate 2s linear infinite;
+ animation-play-state: running;
+}
+.rmv{
+    padding: 5px 10px;
+    background-color: #9582ff;
+    border-style: none;
+    border-radius:10px;
+    width: fit-content;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: whitesmoke;
+    transition: background-color 0.3s ease;
+}
+.rmv:hover{
+    background-color: #765eff;
+
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    background-color: #dfc7ff;
+    max-width: fit-content;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px;        
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(39, 0, 131, 0.1);
+}
+p {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
+#sumWeighted {
+    margin-top: 30px;
+
+}
+.result {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.pass {
+    color: green;
+}
+.fail {
+    color: red;
+}
+@keyframes rowEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.new-row {
+    animation: rowEnter 0.3s ease-out forwards;
+}
+@keyframes rowExit {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+.removing-row {
+    animation: rowExit 0.25s ease-in forwards;
+}
