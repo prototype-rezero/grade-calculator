@@ -1,3 +1,12 @@
+:root {
+    --color-1: rgb(229, 239, 255);
+    --color-2: rgb(214, 225, 255);
+    --color-3: rgb(182, 209, 255);
+    --color-4: rgb(159, 184, 250);
+    --color-5: rgb(118, 161, 240);
+    --text-color: rgb(55, 76, 114);
+    --box-shadow: 0px 0px 15px 0px rgba(0, 17, 90, 0.137);
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +14,9 @@
 }
 body { 
     font-family: Arial, sans-serif;
-    background: #fefaff;
+    background: var(--color-1);
     padding: 20px;
-    color: rgb(89, 75, 97);
+    color: var(--text-color);
 }
 
 table {
@@ -22,11 +31,11 @@ th, td {
     border-radius: 7px;
     padding: 8px;
     text-align: center;
-    background-color: #e6e7ff;
+    background-color: var(--color-3);
 }
 
 th {
-    background: rgb(231, 229, 255);
+    background: var(--color-3);
 }
 
 input {
@@ -35,10 +44,10 @@ input {
     width: 90px;
     height: 25px;
     text-align: center;
-    background-color: #fefdff;
+    background-color: whitesmoke;
 }
 input:focus {
-    outline: rgb(178, 161, 255) 1px solid;
+    outline: var(--color-4) 1px solid;
 
 }
 .name {
@@ -49,16 +58,16 @@ input:focus {
     padding: 2px;
     border-radius: 10px;
     border: none;
-    background-color: #f1ecff;
-    box-shadow: 0px 0px 20px 0px rgba(39, 0, 131, 0.075);
+    background-color: var(--color-2);
+    box-shadow: var(--box-shadow);
 }
 .add{
   display: block;
   margin: 30px auto;
   border: none;
   border-radius: 10px;
-  background-color: #f2f0ff;
-  color:rgb(89, 75, 97);
+  background-color: whitesmoke;
+  color: var(--text-color);
   font-size:14px;
   font-weight: bold;
   position: relative;
@@ -70,7 +79,7 @@ input:focus {
   transition:background-color 0.3s ease;
 }
 .add:hover {
-  background-color: #f2e8ff;
+  background-color: rgb(230, 242, 255);
 }
 @property --deg{
   syntax: '<angle>';
@@ -84,7 +93,7 @@ input:focus {
   width: 103%;
   height: 108%;
   position: absolute;
-  background: conic-gradient(from var(--deg), #dcc1ff, #c4b9ff, #d1a9ff, #d5b0ff);
+  background: conic-gradient(from var(--deg), var(--color-5), var(--color-3), var(--color-4), var(--color-5));
   z-index: -2;
   animation: rotate 2s linear infinite;
   animation-play-state: running;
@@ -109,7 +118,7 @@ input:focus {
 }
 .rmv{
     padding: 5px 10px;
-    background-color: #9582ff;
+    background-color: var(--color-5);
     border-style: none;
     border-radius:10px;
     width: fit-content;
@@ -120,14 +129,14 @@ input:focus {
     transition: background-color 0.3s ease;
 }
 .rmv:hover{
-    background-color: #765eff;
+    background-color: var(--color-4);
 
 }
 
 h2 {
-    color: white;
+    color: whitesmoke;
     text-align: center;
-    background-color: #dfc7ff;
+    background-color: var(--color-4);
     max-width: fit-content;
     border: none;
     border-radius: 15px;
@@ -135,7 +144,7 @@ h2 {
     display: block;
     margin: auto;
     margin-bottom: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(39, 0, 131, 0.1);
+    box-shadow: var(--box-shadow);
 }
 p{
     text-align: center;
@@ -188,21 +197,21 @@ p:not(:first-child) {
     animation: rowExit 0.25s ease-in forwards;
 }
 div:nth-of-type(2), div:nth-of-type(3) {
-    background-color: #f1ecff;
+    background-color: var(--color-2);
     border-radius: 10px;
     padding: 10px;
     border: none;
     width: fit-content;
-    box-shadow: 0px 0px 10px 0px rgba(39, 0, 131, 0.075);
+    box-shadow: var(--box-shadow);
 }
 div:nth-of-type(4) {
     margin: auto;
     margin-top: 20px;
     width: fit-content;
-    background-color: #f2f0ff;
+    background-color: var(--color-2);
     border-radius: 20px;
     padding: 20px ;
-    box-shadow: 0px 0px 20px 0px rgba(39, 0, 131, 0.075);
+    box-shadow:var(--box-shadow);
     transition: transform 0.3s ease;
 }
 div:nth-of-type(4):hover {
