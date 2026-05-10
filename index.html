@@ -1,45 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="gradecalculator.css">
-        <title>Grade Calculator</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="gradecalculator.css" />
+    <title>Grade Calculator</title>
+  </head>
 
-    <body>
-        <h2>Final Grade Calculator</h2>
-            <div class="tbl">
-            <table id="table">
-            <thead>
+  <body>
+    <div
+      class="container"
+      style="
+        max-width: 1280px;
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 20px;
+        border-left: 2px solid #c9d7ff;
+        border-right: 2px solid #c9d7ff;
+      "
+    >
+      <h2>Final Grade Calculator</h2>
+      <div class="tbl">
+        <table id="table">
+          <thead>
             <tr>
-                <th>Module</th>
-                <th>TD / 20</th>
-                <th>TP / 20</th>
-                <th>Exam / 20</th>
-                <th>Parameter</th>
-                <th>Final / 20</th>
-                <th>Final × Parameter</th>
-                <th>Remove module</th>
+              <th>Module</th>
+              <th>TD / 20</th>
+              <th>TP / 20</th>
+              <th>Exam / 20</th>
+              <th>Parameter</th>
+              <th>Final / 20</th>
+              <th>Final × Parameter</th>
+              <th>Remove</th>
             </tr>
-            </thead>
-            <tbody>
-            </tbody>
-            </table>
-            </div>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 
-        <button class="add" onclick="addRow()">Add Module</button>
+      <button class="add" onclick="addRow()">Add Module</button>
 
-        <div class="result" id="sumWeighted">sum (final × parameter) : 0</div>
-        <div class="result">
-            final result / 20 :
-            <span id="finalNumber">0</span>
-        </div>
-        <div>
-            <p>sorry mkch l wa9t la tazyiin o l styling hhhhhhhh</p>
-            <p>edit : design updated.. still not perfect but better than before :D</p>
-            <p>developed with love by ell.ibrahimi</p>
-        </div>
+      <div class="result" id="sumWeighted">sum (final × parameter) : 0</div>
+      <div class="result">
+        final result / 20 :
+        <span id="finalNumber">0</span>
+      </div>
+      <div>
+        <p>sorry mkch l wa9t la tazyiin o l styling hhhhhhhh</p>
+        <p>
+          edit : design updated.. still not perfect but better than before :D
+        </p>
+        <p>
+          coded by
+          <a href="https://github.com/prototype-rezero" target="_blank"
+            >prototype-rezero (mumen)</a
+          >
+        </p>
+      </div>
+    </div>
     <script src="gradecalculator.js"></script>
-    </body>
+  </body>
 </html>
-

@@ -1,74 +1,73 @@
 :root {
-    --color-1: rgb(234, 242, 255);
-    --color-2: rgb(214, 225, 255);
-    --color-3: rgb(190, 214, 255);
-    --color-4: rgb(141, 171, 255);
-    --color-5: rgb(45, 118, 255);
-    --text-color: rgb(55, 76, 114);
-    --box-shadow: 0px 0px 15px 0px rgba(0, 17, 90, 0.137);
+  --color-1: rgb(234, 242, 255);
+  --color-2: rgb(210, 222, 255);
+  --color-3: rgb(190, 214, 255);
+  --color-4: rgb(141, 171, 255);
+  --color-5: rgb(45, 118, 255);
+  --text-color: rgb(56, 76, 114);
+  --box-shadow: 0px 0px 15px 0px rgba(0, 17, 90, 0.137);
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body { 
-    font-family: Arial, sans-serif;
-    background: var(--color-1);
-    padding: 20px;
-    color: var(--text-color);
+body {
+  font-family: Arial, sans-serif;
+  background: var(--color-1);
+  color: var(--text-color);
 }
 
 table {
-    width: 100%;
-    border-collapse:separate ;
-    border-spacing: 5px;
-    background: transparent;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+  background: transparent;
 }
 
-th, td {
-    border: 1px none hsl(240, 100%, 5%);
-    border-radius: 7px;
-    padding: 8px;
-    text-align: center;
-    background-color: var(--color-3);
+th,
+td {
+  border: 1px none hsl(240, 100%, 5%);
+  border-radius: 7px;
+  padding: 8px;
+  text-align: center;
+  background-color: var(--color-3);
 }
 
 th {
-    background: var(--color-3);
+  background: var(--color-3);
 }
 
 input {
-    border-radius: 5px;
-    border-style: none;
-    width: 90px;
-    height: 25px;
-    text-align: center;
-    background-color: whitesmoke;
+  border-radius: 5px;
+  border-style: none;
+  width: 90px;
+  height: 25px;
+  text-align: center;
+  background-color: whitesmoke;
 }
 input:focus {
-    outline: var(--color-4) 1px solid;
-
+  outline: var(--color-4) 1px solid;
 }
 .name {
-    width: 150px;
+  width: 150px;
 }
 .tbl {
-    min-width: fit-content;
-    padding: 2px;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--color-2);
-    box-shadow: var(--box-shadow);
+  min-width: fit-content;
+  padding: 2px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--color-2);
+  box-shadow: var(--box-shadow);
 }
-.add{
+.add {
   display: block;
   margin: 30px auto;
   border: none;
   border-radius: 10px;
   background-color: whitesmoke;
   color: var(--text-color);
-  font-size:14px;
+  font-size: 14px;
   font-weight: bold;
   position: relative;
   width: 120px;
@@ -76,144 +75,171 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition:background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 .add:hover {
   background-color: rgb(230, 242, 255);
 }
-@property --deg{
-  syntax: '<angle>';
+@property --deg {
+  syntax: "<angle>";
   inherits: true;
   initial-value: 0deg;
 }
 .add::before,
-.add::after{
+.add::after {
   content: "";
   border-radius: 12px;
   width: 103%;
   height: 108%;
   position: absolute;
-  background: conic-gradient(from var(--deg), var(--color-5), var(--color-3), var(--color-4), var(--color-5));
+  background: conic-gradient(
+    from var(--deg),
+    var(--color-5),
+    var(--color-3),
+    var(--color-4),
+    var(--color-5)
+  );
   z-index: -2;
   animation: rotate 2s linear infinite;
   animation-play-state: running;
 }
-.add::after{
+.add::after {
   z-index: -1;
   filter: blur(10px);
   transition: filter 0.5s ease;
-} 
+}
 @keyframes rotate {
   to {
     --deg: 360deg;
-  }  
+  }
 }
-.add:hover::after{
+.add:hover::after {
   filter: blur(15px);
 }
 .add:hover::before,
 .add:hover::after {
- animation: rotate 2s linear infinite;
- animation-play-state: running;
+  animation: rotate 2s linear infinite;
+  animation-play-state: running;
 }
-.rmv{
-    padding: 5px 10px;
-    background-color: var(--color-5);
-    border-style: none;
-    border-radius:10px;
-    width: fit-content;
-    height: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    color: whitesmoke;
-    transition: background-color 0.3s ease;
+.rmv {
+  padding: 5px 10px;
+  background-color: var(--color-5);
+  border-style: none;
+  border-radius: 10px;
+  width: fit-content;
+  height: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: whitesmoke;
+  transition: background-color 0.3s ease;
 }
-.rmv:hover{
-    background-color: var(--color-4);
-
+.rmv:hover {
+  background-color: var(--color-4);
 }
 
 h2 {
-    color: whitesmoke;
-    text-align: center;
-    background-color: var(--color-4);
-    max-width: fit-content;
-    border: none;
-    border-radius: 15px;
-    padding: 10px 20px;        
-    display: block;
-    margin: auto;
-    margin-bottom: 20px;
-    box-shadow: var(--box-shadow);
+  color: whitesmoke;
+  text-align: center;
+  background-color: var(--color-4);
+  max-width: fit-content;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
 }
-p{
-    text-align: center;
-    font-weight: bold;
+p {
+  text-align: center;
+  font-weight: bold;
 }
 p:not(:first-child) {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 #sumWeighted {
-    margin-top: 30px;
-
+  margin-top: 30px;
 }
 .result {
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .pass {
-    color: green;
+  color: green;
 }
 .fail {
-    color: red;
+  color: red;
 }
 @keyframes rowEnter {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .new-row {
-    animation: rowEnter 0.3s ease-out forwards;
+  animation: rowEnter 0.3s ease-out forwards;
 }
 @keyframes rowExit {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(12px);
-    }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
 }
 .removing-row {
-    animation: rowExit 0.25s ease-in forwards;
+  animation: rowExit 0.25s ease-in forwards;
 }
-div:nth-of-type(2), div:nth-of-type(3) {
-    background-color: var(--color-2);
-    border-radius: 10px;
-    padding: 10px;
-    border: none;
-    width: fit-content;
-    box-shadow: var(--box-shadow);
+div:nth-of-type(2),
+div:nth-of-type(3) {
+  background-color: var(--color-2);
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  width: fit-content;
+  box-shadow: var(--box-shadow);
 }
 div:nth-of-type(4) {
-    margin: auto;
-    margin-top: 20px;
-    width: fit-content;
-    background-color: var(--color-2);
-    border-radius: 20px;
-    padding: 20px ;
-    box-shadow:var(--box-shadow);
-    transition: transform 0.3s ease;
+  margin: auto;
+  margin-top: 20px;
+  width: fit-content;
+  background-color: var(--color-2);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
 }
-div:nth-of-type(4):hover {
-    transform: scale(1.05);
+/* div:nth-of-type(4):hover {
+  transform: scale(1.05);
+} */
+a {
+  color: var(--color-5);
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  background: var(--color-5);
+  transition: transform 0.3s;
+}
+a:hover::after {
+  transform: scaleX(1);
 }
