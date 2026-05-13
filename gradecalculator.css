@@ -1,10 +1,14 @@
 :root {
-  --color-1: rgb(234, 242, 255);
-  --color-2: rgb(210, 222, 255);
-  --color-3: rgb(190, 214, 255);
+  --color-1: rgb(255, 255, 255);
+  --color-2: rgb(239, 243, 255);
+  --alt-color-2: rgb(203, 217, 255);
+  --color-3: white;
+  --alt-color-3: rgb(238, 242, 255);
+  --btn-color-3: rgb(139, 166, 255);
   --color-4: rgb(141, 171, 255);
+  --btn-color-4: rgb(195, 210, 255);
   --color-5: rgb(45, 118, 255);
-  --text-color: rgb(56, 76, 114);
+  --text-color: rgb(42, 86, 145);
   --box-shadow: 0px 0px 15px 0px rgba(0, 17, 90, 0.137);
 }
 * {
@@ -28,23 +32,37 @@ table {
 th,
 td {
   border: 1px none hsl(240, 100%, 5%);
-  border-radius: 7px;
+  border-radius: 6px;
   padding: 8px;
+  font-size: 16px;
   text-align: center;
   background-color: var(--color-3);
 }
 
 th {
-  background: var(--color-3);
+  background: var(--alt-color-3);
 }
 
 input {
   border-radius: 5px;
   border-style: none;
-  width: 90px;
-  height: 25px;
+  /* width: 100px;
+  height: 30px; */
   text-align: center;
-  background-color: whitesmoke;
+  padding: 5px;
+  background-color: white;
+  color: var(--text-color);
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 1px solid transparent;
+  transition: outline 0.3s ease;
+  caret-color: var(--color-5);
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 input:focus {
   outline: var(--color-4) 1px solid;
@@ -54,18 +72,18 @@ input:focus {
 }
 .tbl {
   min-width: fit-content;
-  padding: 2px;
-  border-radius: 10px;
+  padding: 1px;
+  border-radius: 8px;
   border: none;
-  background-color: var(--color-2);
-  box-shadow: var(--box-shadow);
+  background-color: var(--alt-color-2);
+  /* box-shadow: var(--box-shadow); */
 }
 .add {
   display: block;
   margin: 30px auto;
   border: none;
   border-radius: 10px;
-  background-color: whitesmoke;
+  background-color: white;
   color: var(--text-color);
   font-size: 14px;
   font-weight: bold;
@@ -95,8 +113,8 @@ input:focus {
   background: conic-gradient(
     from var(--deg),
     var(--color-5),
-    var(--color-3),
-    var(--color-4),
+    var(--btn-color-3),
+    var(--btn-color-4),
     var(--color-5)
   );
   z-index: -2;
@@ -130,7 +148,7 @@ input:focus {
   height: 30px;
   font-weight: bold;
   cursor: pointer;
-  color: whitesmoke;
+  color: white;
   transition: background-color 0.3s ease;
 }
 .rmv:hover {
@@ -138,7 +156,7 @@ input:focus {
 }
 
 h2 {
-  color: whitesmoke;
+  color: white;
   text-align: center;
   background-color: var(--color-4);
   max-width: fit-content;
@@ -148,7 +166,7 @@ h2 {
   display: block;
   margin: auto;
   margin-bottom: 20px;
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
 }
 p {
   text-align: center;
@@ -161,7 +179,7 @@ p:not(:first-child) {
   margin-top: 30px;
 }
 .result {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
@@ -206,7 +224,7 @@ div:nth-of-type(3) {
   padding: 10px;
   border: none;
   width: fit-content;
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
 }
 div:nth-of-type(4) {
   margin: auto;
@@ -215,14 +233,14 @@ div:nth-of-type(4) {
   background-color: var(--color-2);
   border-radius: 20px;
   padding: 20px;
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
   transition: transform 0.3s ease;
 }
 /* div:nth-of-type(4):hover {
   transform: scale(1.05);
 } */
 a {
-  color: var(--color-5);
+  color: #84a4ff;
   text-decoration: none;
   font-weight: bold;
   position: relative;
@@ -237,7 +255,7 @@ a::after {
   height: 1px;
   transform: scaleX(0);
   transform-origin: bottom left;
-  background: var(--color-5);
+  background: #84a4ff;
   transition: transform 0.3s;
 }
 a:hover::after {
